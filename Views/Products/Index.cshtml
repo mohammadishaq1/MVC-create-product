@@ -11,6 +11,7 @@
     <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
 
+<a href="/products/create" class="btn btn-primary btn-lg active">Create</a>
 <table class="table">
     <tr>
         <th>Product ID</th>
@@ -21,7 +22,7 @@
         <th>Category ID</th>
         <th>Brand Id</th>
         <th>Active</th>
-
+       
     </tr>
     @foreach(var item in Model)
     {
@@ -36,6 +37,12 @@
     <td>@item.Active</td>
     <td>
         <a href="/products/details/@item.ProductID">Details</a>
+    </td>
+    <td>
+        <a href="/products/edit/@item.ProductID">Edit</a>
+    </td>
+    <td>
+        <a href="/products/delete/@item.ProductID">Delete</a>
     </td>
 </tr>
     }
