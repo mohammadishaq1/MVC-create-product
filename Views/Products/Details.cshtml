@@ -1,0 +1,40 @@
+﻿@model p6.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+<table class="table">
+    <tr>
+        <th>Product Id</th>
+        <td>@Model.ProductID</td>
+    </tr>
+    <tr>
+        <th>Product Name</th>
+        <td>@Model.ProductName</td>
+    </tr>
+    <tr>
+        <th>Product Price</th>
+        <td>@Model.Price</td>
+    </tr>
+    <tr>
+        <th>Date of purchase </th>
+        <td>@Model.DateOfPurchase</td>
+    </tr>
+    <tr>
+        <th>Availability status</th>
+        <td>@Model.AvailabilityStatus</td>
+    </tr>
+    <tr>
+        <th>Brand ID</th>
+        <td>@Model.BrandID</td>
+    </tr>
+    <tr>
+        <th>Active</th>
+        <td>@Model.Active</td>
+    </tr>
+ 
+</table>
+
+<a href="/products/index">Go back</a>

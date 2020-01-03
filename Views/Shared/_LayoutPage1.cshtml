@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <Link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/index">Company<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products/index">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories/index">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/brands/index">Brands</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container-fluid">
+       
+                @RenderBody()
+         
+    </div>
+</body>
+</html>
