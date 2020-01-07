@@ -6,6 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 namespace p6.Models
 {
@@ -14,9 +15,15 @@ namespace p6.Models
     
     public partial class Product
     {
+
         public long ProductID { get; set; }
+     
+        [Display(Name ="Product Name")]
+        [Required]
         public string ProductName { get; set; }
+        [Required]
         public Nullable<decimal> Price { get; set; }
+        [Required]
         public Nullable<System.DateTime> DateOfPurchase { get; set; }
         public string AvailabilityStatus { get; set; }
         public Nullable<long> CategoryID { get; set; }

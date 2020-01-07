@@ -1,4 +1,4 @@
-﻿
+﻿@model p6.Models.Product
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
@@ -6,35 +6,59 @@
 
 <h2>New Product</h2>
 
-<form action="/products/create" method="post">
+
+@using (Html.BeginForm("Create", "Products", FormMethod.Post))
+{
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="ProductName">Product Name</label>
-            <input type="text" class="form-control" id="ProductName" name="ProductName" placeholder="Product Name">
+           
+            @Html.LabelFor(m=>m.ProductName)
+            @Html.TextBoxFor(m=>m.ProductName, new { placeholder="Product Name", @class="form-control"})
+            @Html.ValidationMessageFor(m=>m.ProductName)   
         </div>
         <div class="form-group col-md-6">
-            <label for="Price">Price</label>
-            <input type="number" class="form-control" id="Price" name="Price" placeholder="Price">
+
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { placeholder = "Price", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Price)
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="DateOfPurchase">Date of Purchase</label>
             <input type="date" class="form-control" id="DateOfPurchase" name="DateOfPurchase" placeholder="Date of Purchase">
+            @Html.ValidationMessageFor(m => m.Price)
         </div>
         <div class="form-group col-md-6">
-            <label for="AvailabilityStatus">Availability Status</label>
-            <input type="text" class="form-control" id="AvailabilityStatus" name="AvailabilityStatus" placeholder="Availability Status">
+            <select class="form-control" id="AvailabilityStatus" name="AvailabilityStatus">
+                <option value="">Please Select</option>
+                <option value="InStock">InStock</option>
+                <option value="OutStock">OutStock</option>
+
+            </select>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="CategoryID">Category ID</label>
-            <input type="text" class="form-control" id="CategoryID" name="CategoryID" placeholder="Category ID">
+            <select class="form-control" id="CategoryID" name="CategoryID">
+                <option value="">Please Select</option>
+                @foreach (var cat in ViewBag.category)
+                {
+                    <option value="@cat.CategoryID">@cat.CategoryName</option>
+                }
+            </select>
         </div>
         <div class="form-group col-md-6">
             <label for="BrandID">Brand ID</label>
-            <input type="text" class="form-control" id="BrandID" name="BrandID" placeholder="Brand ID">
+            <select class="form-control" id="BrandID" name="BrandID">
+                <option value="">Please Select</option>
+                @foreach (var cat in ViewBag.brand)
+                {
+                    <option value="@cat.BrandID">@cat.BrandName</option>
+                }
+            </select>
+
         </div>
     </div>
     <div class="form-group">
@@ -48,4 +72,8 @@
 
     <button type="submit" class="btn btn-success">Create</button>
     <a class="btn btn-danger" href="/products/index">Cancel</a>
-</form>
+}
+
+
+
+

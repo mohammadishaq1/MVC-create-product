@@ -9,11 +9,21 @@ namespace p6.Controllers
     public class ProductsController : Controller
     {
         // GET: Products
-        public ActionResult Index(string Search = "")
+        public ActionResult Index(string Search = "", string SortColumn="ProductName", string IconClass="fa-sort-asc")
         {
             EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
             ViewBag.value = Search;
-            List<Product> products = db.Products.Where(temp=>temp.ProductName.Contains(Search)).ToList();
+            List<Product> products = db.Products.Where(temp => temp.ProductName.Contains(Search)).ToList();
+            ViewBag.SortColumn = SortColumn;
+            ViewBag.IconClass = IconClass;
+            if (ViewBag.SortColumn == "ProductID")
+            {
+                if (ViewBag.IconClass == "fa-sort-asc")
+                    products = products.OrderBy(temp => temp.ProductID).ToList();
+                else
+                 products = products.OrderByDescending(temp => temp.ProductID).ToList();
+            }
+            
             return View(products);
         }
 
@@ -26,6 +36,9 @@ namespace p6.Controllers
 
         public ActionResult Create()
         {
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            ViewBag.category = db.Categories.ToList();
+            ViewBag.brand = db.Brands.ToList();
             return View();
         }
 
@@ -42,6 +55,8 @@ namespace p6.Controllers
         {
             EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
             Product currentProduct = db.Products.Where(temp => temp.ProductID == id).FirstOrDefault();
+            ViewBag.brand = db.Brands.ToList();
+            ViewBag.category = db.Categories.ToList();
             return View(currentProduct);
         }
 
